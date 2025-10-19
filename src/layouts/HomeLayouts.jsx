@@ -1,4 +1,3 @@
-import React from "react";
 import Header from "../components/Header";
 import { Outlet } from "react-router";
 import LatestNews from "../components/LatestNews";
@@ -18,7 +17,7 @@ const HomeLayouts = () => {
           <Navbar />
         </section>
       </header>
-      <main className="max-w-11/12 mx-auto px-5 my-10 grid grid-cols-12 *:border">
+      <main className="max-w-11/12 mx-auto px-5 my-10 grid grid-cols-12 gap-6">
         <aside className="col-span-3">
           <LeftAside />
         </aside>
