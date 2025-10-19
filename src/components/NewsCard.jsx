@@ -4,8 +4,16 @@ import { PiBookmarkSimple } from "react-icons/pi";
 import { Link } from "react-router";
 
 const NewsCard = ({ news }) => {
-  const { title, details, thumbnail_url, author, rating, total_view, tags } =
-    news;
+  const {
+    id,
+    title,
+    details,
+    thumbnail_url,
+    author,
+    rating,
+    total_view,
+    tags,
+  } = news;
 
   const formatDate = (dateStr) => {
     const date = new Date(dateStr);
@@ -56,7 +64,7 @@ const NewsCard = ({ news }) => {
           {details.length > 200 ? (
             <>
               {details.slice(0, 200)}...
-              <Link to={``} className="text-[#FF8C47]">
+              <Link to={`/news-details/${id}`} className="text-[#FF8C47]">
                 Read More
               </Link>
             </>
