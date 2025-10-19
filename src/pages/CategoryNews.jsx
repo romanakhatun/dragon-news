@@ -7,7 +7,7 @@ const CategoryNews = () => {
   const { id } = useParams();
 
   const data = useLoaderData();
-  console.log(id);
+  // console.log(id);
 
   useEffect(() => {
     if (id === "0") {
@@ -32,7 +32,7 @@ const CategoryNews = () => {
     setCategoryNews(filterNews);
   }, [data, id]);
 
-  console.log(categoryNews);
+  // console.log(categoryNews);
 
   return (
     <div className="grid grid-cols-1 gap-7">

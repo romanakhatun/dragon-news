@@ -1,6 +1,29 @@
-import { Link } from "react-router";
+import { use, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
+import { AuthContext } from "../contexts/AuthContext";
 
 const Login = () => {
+  const { signInUser } = use(AuthContext);
+  const [error, setError] = useState("");
+  // const emailRef = useRef();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    signInUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+        // event.target.reset();
+        navigate(location.state || "/");
+      })
+      .catch((err) => {
+        setError(err.message);
+      });
+  };
+
   return (
     <div className="place-items-center pb-30">
       <div className="card w-full bg-base-100 max-w-md lg:max-w-lg">
@@ -10,7 +33,7 @@ const Login = () => {
           </h1>
           <div className="border-b border-base-300 my-10"></div>
 
-          <form>
+          <form onSubmit={handleSignIn}>
             <fieldset className="fieldset space-y-5">
               <div className="space-y-3">
                 <label className="label text-primary font-semibold text-sm">
@@ -36,6 +59,9 @@ const Login = () => {
               </div>
               <button className="btn btn-primary">Login</button>
             </fieldset>
+
+            {error && <p className="text-red-600 mt-4 text-center">{error}</p>}
+
             <div>
               <p className="text-center text-accent mt-4 font-semibold">
                 Dont’t Have An Account ?{" "}
