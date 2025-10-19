@@ -1,5 +1,5 @@
 import admin from "../assets/admin.svg";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   return (
@@ -12,9 +12,12 @@ const Navbar = () => {
       </div>
       <div className="flex gap-[2px] ">
         <img src={admin} alt="" />
-        <button className="btn text-white bg-primary rounded-none py-[6px] px-10">
+        <Link
+          to="/auth/login"
+          className="btn text-white bg-primary rounded-none py-[6px] px-10"
+        >
           Login
-        </button>
+        </Link>
       </div>
     </div>
   );
